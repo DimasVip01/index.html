@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ООО "СИБИНТЕК-СОФТ"</title>
+<style>
+:root {
+--primary-blue: #1a2980;
+--secondary-blue: #26d0ce;
+--accent-blue: #0056b3;
+--light-bg: #f8fafc;
+--card-bg: #ffffff;
+--text-dark: #2d3748;
+--text-light: #4a5568;
+--gradient-main: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+--gradient-light: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+background: var(--gradient-light);
+color: var(--text-dark);
+line-height: 1.6;
+min-height: 100vh;
+}
+.container {
+width: 90%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 0 15px;
+}
+header {
+background: var(--gradient-main);
+color: white;
+padding: 1.2rem 0;
+box-shadow: 0 4px 20px rgba(26, 41, 128, 0.3);
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+.header-content {
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+}
+.logo-section {
+display: flex;
+align-items: center;
+gap: 15px;
+min-width: 250px;
+}
+.logo {
+width: 50px;
+height: 50px;
+background: white;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-weight: bold;
+color: var(--primary-blue);
+font-size: 1.3rem;
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.company-name h1 {
+font-size: 1.5rem;
+margin-bottom: 3px;
+white-space: nowrap;
+}
+.company-name p {
+opacity: 0.9;
+font-size: 0.85rem;
+white-space: nowrap;
+}
+nav ul {
+display: flex;
+list-style: none;
+gap: 10px;
+flex-wrap: wrap;
+}
+nav a {
+color: white;
+text-decoration: none;
+padding: 6px 12px;
+border-radius: 20px;
+transition: all 0.3s;
+font-weight: 500;
+font-size: 0.9rem;
+white-space: nowrap;
+border: 1px solid rgba(255, 255, 255, 0.2);
+}
+nav a:hover, nav a.active {
+background-color: rgba(255, 255, 255, 0.25);
+transform: translateY(-2px);
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.mobile-menu-btn {
+display: none;
+background: none;
+border: none;
+color: white;
+font-size: 1.5rem;
+cursor: pointer;
+padding: 5px;
+}
+main {
+padding: 2rem 0;
+min-height: calc(100vh - 250px);
+}
+.page {
+display: none;
+}
+.page.active {
+display: block;
+}
+.page-title {
+color: var(--primary-blue);
+margin-bottom: 1.5rem;
+padding-bottom: 0.8rem;
+border-bottom: 2px solid var(--secondary-blue);
+font-size: 1.8rem;
+}
+.card {
+background: var(--card-bg);
+border-radius: 12px;
+padding: 1.5rem;
+margin-bottom: 1.5rem;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+border-left: 5px solid var(--secondary-blue);
+}
+.card-title {
+color: var(--primary-blue);
+margin-bottom: 1rem;
+font-size: 1.3rem;
+border-bottom: 1px solid #e2e8f0;
+padding-bottom: 0.5rem;
+}
+.info-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 1.5rem;
+margin-bottom: 2rem;
+}
+.info-item {
+background: var(--card-bg);
+padding: 1.5rem;
+border-radius: 12px;
+box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+border-top: 4px solid var(--primary-blue);
+}
+.info-item h3 {
+color: var(--primary-blue);
+margin-bottom: 0.8rem;
+font-size: 1.2rem;
+}
+.list {
+list-style-position: inside;
+margin-bottom: 1rem;
+}
+.list li {
+margin-bottom: 0.5rem;
+padding-left: 0.5rem;
+}
+.highlight {
+background: linear-gradient(90deg, rgba(26, 41, 128, 0.1) 0%, rgba(38, 208, 206, 0.1) 100%);
+padding: 1.2rem;
+border-radius: 8px;
+margin: 1.2rem 0;
+border-left: 4px solid var(--secondary-blue);
+}
+.step-list {
+counter-reset: step-counter;
+list-style: none;
+}
+.step-list li {
+counter-increment: step-counter;
+margin-bottom: 1.5rem;
+position: relative;
+padding-left: 3rem;
+}
+.step-list li:before {
+content: counter(step-counter);
+background: var(--gradient-main);
+color: white;
+font-weight: bold;
+width: 2rem;
+height: 2rem;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+position: absolute;
+left: 0;
+top: 0;
+}
+footer {
+background: var(--gradient-main);
+color: white;
+padding: 2rem 0;
+margin-top: 2rem;
+}
+.footer-content {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 2rem;
+}
+.footer-section {
+flex: 1;
+min-width: 250px;
+}
+.footer-section h3 {
+color: var(--secondary-blue);
+margin-bottom: 1rem;
+font-size: 1.2rem;
+}
+.copyright {
+text-align: center;
+margin-top: 2rem;
+padding-top: 1rem;
+border-top: 1px solid rgba(255, 255, 255, 0.2);
+font-size: 0.9rem;
+opacity: 0.9;
+}
+@media (max-width: 768px) {
+.header-content {
+flex-direction: column;
+text-align: center;
+gap: 1rem;
+}
+nav ul {
+flex-direction: column;
+width: 100%;
+display: none;
+}
+nav ul.active {
+display: flex;
+}
+.mobile-menu-btn {
+display: block;
+}
+.info-grid {
+grid-template-columns: 1fr;
+}
+.footer-content {
+flex-direction: column;
+}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="header-content">
+<div class="logo-section">
+<div class="logo">С-С</div>
+<div class="company-name">
+<h1>ООО "СИБИНТЕК-СОФТ"</h1>
+<p>Дочернее общество ООО ИК "СИБИНТЕК"</p>
+</div>
+</div>
+<button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+<nav>
+<ul id="navMenu">
+<li><a href="#about" class="nav-link active">О компании</a></li>
+<li><a href="#work" class="nav-link">Рабочее время</a></li>
+<li><a href="#safety" class="nav-link">Охрана труда</a></li>
+<li><a href="#environment" class="nav-link">Окружающая среда</a></li>
+<li><a href="#fire" class="nav-link">Пожарная безопасность</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</header>
+<main>
+<div class="container">
+<section id="about-page" class="page active">
+<h2 class="page-title">О компании</h2>
+<div class="card">
+<h3 class="card-title">ООО "СИБИНТЕК-СОФТ"</h3>
+<p>ООО ИК "СИБИНТЕК" работает на рынке ИТ-сервиса и аутсорсинга с 1999 года и является одним из лидеров отрасли. ООО "СИБИНТЕК-СОФТ" — дочернее общество ООО ИК "СИБИНТЕК", основанное в 2017 году. На сегодняшний день численность компании составляет более 1900 человек.</p>
+</div>
+<div class="info-grid">
+<div class="info-item">
+<h3>Основные направления деятельности</h3>
+<ul class="list">
+<li>Управление проектами</li>
+<li>Сопровождение и развитие информационных систем</li>
+<li>Проектирование и развитие интегрированных бизнес-сервисов</li>
+<li>Разработка собственных продуктов в сфере ИТ</li>
+</ul>
+</div>
+<div class="info-item">
+<h3>Ключевые заказчики</h3>
+<ul class="list">
+<li>ПАО "НК "Роснефть"</li>
+<li>ООО ИК "СИБИНТЕК"</li>
+<li>Организации нефтяной компании</li>
+</ul>
+</div>
+<div class="info-item">
+<h3>Достижения компании</h3>
+<ul class="list">
+<li>Многолетний опыт с крупнейшими вендорами ПО</li>
+<li>Сертифицированная партнерами деятельность</li>
+<li>Более 900 клиентов</li>
+<li>Более 1500 проектов внедренных решений</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="work-page" class="page">
+<h2 class="page-title">Рабочее время и распорядок</h2>
+<div class="card">
+<h3 class="card-title">Режим работы в ООО "СИБИНТЕК-СОФТ"</h3>
+<ul class="list">
+<li>Начало рабочего дня – 9:00 часов</li>
+<li>Окончание рабочего дня – 18:00 часов (пятница – 16:45 ч.)</li>
+<li>Обеденный перерыв – не более 45 минут</li>
+<li>Кофе-пауза – 15 минут (включается в рабочее время)</li>
+</ul>
+</div>
+<div class="info-grid">
+<div class="info-item">
+<h3>Нормальная продолжительность рабочего времени</h3>
+<ul class="list">
+<li>Не более 40 часов в неделю</li>
+<li>Неполный рабочий день/неделя</li>
+<li>Работа по совместительству</li>
+<li>Ненормированный рабочий день</li>
+</ul>
+</div>
+<div class="info-item">
+<h3>Сокращенное рабочее время</h3>
+<ul class="list">
+<li>До 16 лет – не более 24 часов в неделю</li>
+<li>16-18 лет – не более 35 часов в неделю</li>
+<li>Инвалиды 1 и 2 группы – не более 35 часов</li>
+<li>Вредные условия труда – не более 36 часов</li>
+</ul>
+</div>
+</div>
+<div class="highlight">
+<p>Сверхурочные работы оплачиваются в повышенном размере. Ночное время – с 22 часов до 6 часов.</p>
+</div>
+</section>
+<section id="safety-page" class="page">
+<h2 class="page-title">Промышленная безопасность и охрана труда</h2>
+<div class="card">
+<h3 class="card-title">Политика компании в области ПБОТОС</h3>
+<p>Компания формализует единые принципы и подходы в области промышленной безопасности, охраны труда и окружающей среды с целью обеспечения постоянного улучшения результативности интегрированной системы управления.</p>
+</div>
+<div class="info-grid">
+<div class="info-item">
+<h3>Права работника в области охраны труда</h3>
+<ul class="list">
+<li>Рабочее место, соответствующее нормативным требованиям</li>
+<li>Отказ от выполнения работ при опасности для жизни и здоровья</li>
+<li>Обучение безопасным методам труда за счет работодателя</li>
+<li>Получение достоверной информации об условиях труда</li>
+<li>Страхование от несчастных случаев на производстве</li>
+</ul>
+</div>
+<div class="info-item">
+<h3>Обязанности работника в области охраны труда</h3>
+<ul class="list">
+<li>Соблюдать требования охраны труда</li>
+<li>Немедленно извещать о ситуациях, угрожающих жизни и здоровью</li>
+<li>Проходить обучение и инструктажи</li>
+<li>Проходить медицинские осмотры</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<h3 class="card-title">Действия при микротравме</h3>
+<ol class="step-list">
+<li>Сообщить о микротравме своему руководителю</li>
+<li>Использовать аптечку или обратиться за первой помощью в медпункт</li>
+<li>Объяснить руководителю причины и обстоятельства получения микротравмы</li>
+<li>Вернуться на рабочее место и продолжить работу</li>
+</ol>
+<p>Места расположения аптечек отмечены специальным знаком.</p>
+</div>
+</section>
+<section id="environment-page" class="page">
+<h2 class="page-title">Охрана окружающей среды</h2>
+<div class="card">
+<h3 class="card-title">Основополагающие экологические нормы</h3>
+<p>Законодательство в области охраны окружающей среды основывается на Конституции РФ и включает Федеральный закон "Об охране окружающей среды". Каждый гражданин РФ имеет право на благоприятную окружающую среду, достоверную информацию о ее состоянии и возмещение ущерба от экологических правонарушений.</p>
+</div>
+<div class="info-grid">
+<div class="info-item">
+<h3>Политика компании</h3>
+<p>Важнейшим принципом устойчивого развития ООО "СИБИНТЕК-СОФТ" является экономический рост в сочетании с ответственным отношением к сохранению благоприятной окружающей среды для нынешних и будущих поколений.</p>
+</div>
+<div class="info-item">
+<h3>Обязательства компании</h3>
+<ul class="list">
+<li>Рационально использовать природные ресурсы</li>
+<li>Снижать уровень негативного воздействия на окружающую среду</li>
+<li>Принимать меры по снижению воздействия на изменения климата</li>
+<li>Сохранение экосистем и биоразнообразия</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="fire-page" class="page">
+<h2 class="page-title">Пожарная безопасность в организации</h2>
+<div class="card">
+<h3 class="card-title">Общие требования</h3>
+<ul class="list">
+<li>Персональная ответственность возлагается на руководителя организации</li>
+<li>Работники допускаются к работе только после обучения мерам пожарной безопасности</li>
+<li>Для каждого объекта утверждается инструкция о мерах пожарной безопасности</li>
+</ul>
+</div>
+<div class="info-grid">
+<div class="info-item">
+<h3>Обязанности работников</h3>
+<ul class="list">
+<li>Соблюдать требования пожарной безопасности</li>
+<li>Знать схему эвакуации и место расположения огнетушителей</li>
+<li>Знать правила пользования огнетушителями</li>
+<li>Держать свободными подходы к средствам пожаротушения</li>
+</ul>
+</div>
+</div>
+<div class="highlight">
+<p>В случае возникновения пожара немедленно сообщить по телефону 01 (101 с мобильного) и приступить к эвакуации согласно плану.</p>
+</div>
+</section>
+</div>
+</main>
+<footer>
+<div class="container">
+<div class="footer-content">
+<div class="footer-section">
+<h3>ООО "СИБИНТЕК-СОФТ"</h3>
+<p>Дочернее общество ООО ИК "СИБИНТЕК"<br>
+Более 1900 сотрудников<br>
+Основано в 2017 году</p>
+</div>
+<div class="footer-section">
+<h3>Основные направления</h3>
+<p>Управление проектами<br>
+Разработка информационных систем<br>
+Бизнес-консалтинг<br>
+Сервисная интеграция</p>
+</div>
+</div>
+<div class="copyright">
+<p>© 2025 ООО "СИБИНТЕК-СОФТ"</p>
+</div>
+</div>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+const navLinks = document.querySelectorAll('.nav-link');
+const pages = document.querySelectorAll('.page');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navMenu = document.getElementById('navMenu');
+function showPage(pageId) {
+pages.forEach(page => {
+page.classList.remove('active');
+if (page.id === pageId + '-page') {
+page.classList.add('active');
+}
+});
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href') === '#' + pageId) {
+link.classList.add('active');
+}
+});
+if (window.innerWidth <= 768) {
+navMenu.style.display = 'none';
+}
+}
+navLinks.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const pageId = this.getAttribute('href').substring(1);
+showPage(pageId);
+history.pushState(null, '', '#' + pageId);
+});
+});
+mobileMenuBtn.addEventListener('click', function() {
+if (navMenu.style.display === 'flex' || navMenu.style.display === '') {
+navMenu.style.display = 'none';
+} else {
+navMenu.style.display = 'flex';
+}
+});
+function loadPageFromHash() {
+const hash = window.location.hash.substring(1);
+if (hash) {
+showPage(hash);
+} else {
+showPage('about');
+}
+}
+window.addEventListener('hashchange', loadPageFromHash);
+loadPageFromHash();
+});
+</script>
+</body>
+</html>
